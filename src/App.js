@@ -6,7 +6,9 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
+
+  const d = new Date();
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -18,6 +20,9 @@ function App() {
     }  
   }
 
+  const date = data.dt && new Date((data.dt + data.timezone) * 1000).toUTCString()
+  console.log(date)
+
   return (
     <div className="App">
       <div className="search">
@@ -27,15 +32,27 @@ function App() {
         onKeyPress={searchLocation}
         placeholder="Enter Location"
         type="text"/>
-
       </div>
-      <div className="container">
+      <div className="date">
+        <div>{date}</div>
+      </div>
+      <div className="location">
+        <div>{data.name}, {data.sys?.country}</div>
+      </div>
+      <div className="temperture">
+        <div>{data.main?.temp.toFixed()}˚C</div>
+      </div>
+      <div className="sky">
+        <div>{data.weather && data.weather[0].main}</div>
+      </div>
+
+      {/* <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name}</p>
+            <p>{data.name}, {data.sys?.country}</p>
           </div>
           <div className="temp">
-            <h1>{data.main?.temp}˚C</h1>
+            <h1>{data.main?.temp.toFixed()}˚C</h1>
           </div>
           <div className="description">
             <p>{data.weather && data.weather[0].main}</p>
@@ -51,11 +68,11 @@ function App() {
             <p>Humidity</p>
           </div>
           <div className="wind">
-            <p className="bold">{data.sys?.country}</p>
+            <p className="bold"></p>
             <p>Wind Speed</p>
           </div>
         </div>
-      </div>     
+      </div>      */}
     </div>
   );
 }
