@@ -8,7 +8,6 @@ function App() {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
 
-  const d = new Date();
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -31,11 +30,13 @@ function App() {
         <div className="country">{data.sys?.country}</div>
       </div>
 
+    {data.name != undefined && 
       <div className="weather">
         <div className="sky">{data.weather && data.weather[0].main}</div>
         <div className="temperture">{data.main?.temp.toFixed()}˚C</div>
       </div>
-    
+    }
+
       <div className="date">
         <div>{date}</div>
       </div>
