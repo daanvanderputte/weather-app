@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -95,4 +95,65 @@ h1 {
 
 .bold {
   font-weight: 700;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bolder;
+  color: white;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Location */
+.location {
+  display: flex;
+}
+.city {
+  font-size: 900%;
+}
+.country {
+  font-size: 620%;
+  transform: rotate(-270deg);
+}
+
+/* Weather */
+.weather {
+  display: flex;
+}
+.sky{
+  font-size: 320%;
+  transform: rotate(270deg);
+}
+.temperture {
+  font-size: 900%;
+}
+
+/* Date and Time */
+.date {
+  font-size: 120%;
+}
+
+/* Searchbar */
+.App input {
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  border: 1px solid black;
+  color: black;
+  outline: none;
 }

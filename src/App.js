@@ -25,6 +25,21 @@ function App() {
 
   return (
     <div className="App">
+  
+      <div className="location">
+        <div className="city">{data.name}</div>
+        <div className="country">{data.sys?.country}</div>
+      </div>
+
+      <div className="weather">
+        <div className="sky">{data.weather && data.weather[0].main}</div>
+        <div className="temperture">{data.main?.temp.toFixed()}˚C</div>
+      </div>
+    
+      <div className="date">
+        <div>{date}</div>
+      </div>
+
       <div className="search">
         <input 
         value={location} 
@@ -32,18 +47,6 @@ function App() {
         onKeyPress={searchLocation}
         placeholder="Enter Location"
         type="text"/>
-      </div>
-      <div className="date">
-        <div>{date}</div>
-      </div>
-      <div className="location">
-        <div>{data.name}, {data.sys?.country}</div>
-      </div>
-      <div className="temperture">
-        <div>{data.main?.temp.toFixed()}˚C</div>
-      </div>
-      <div className="sky">
-        <div>{data.weather && data.weather[0].main}</div>
       </div>
 
       {/* <div className="container">
